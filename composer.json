@@ -1,0 +1,20 @@
+{
+    "name":        "darvinstudio/darvin-bitrix24-bundle",
+    "description": "This bundle provides Bitrix24 integration for Symfony-based applications.",
+    "keywords":    ["bitrix24"],
+    "type":        "symfony-bundle",
+    "license":     "proprietary",
+    "authors":     [
+        {
+            "name":     "Darvin Studio",
+            "email":    "info@darvinstudio.ru",
+            "homepage": "https://www.darvinstudio.ru"
+        }
+    ],
+    "require": {
+        "eightpoints/guzzle-bundle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": { "Darvin\\Bitrix24Bundle\\": "" }
+    }
+}
