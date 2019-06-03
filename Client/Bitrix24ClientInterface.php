@@ -21,13 +21,4 @@ interface Bitrix24ClientInterface
      * @param array  $params Parameters
      */
     public function call($method, array $fields = [], array $params = []);
-
-    /**
-     * @param string $method Method
-     * @param array  $fields Fields
-     * @param array  $params Parameters
-     *
-     * @throws \RuntimeException
-     */
-    public function mustCall($method, array $fields = [], array $params = []);
 }

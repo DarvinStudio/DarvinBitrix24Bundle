@@ -8,18 +8,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Client;
+namespace Darvin\Bitrix24Bundle\Repository\CRM;
+
+use Darvin\Bitrix24Bundle\Model\CRM\Lead;
 
 /**
- * Client
+ * Lead repository
  */
-class Bitrix24Client implements Bitrix24ClientInterface
+class LeadRepository implements LeadRepositoryInterface
 {
     /**
      * {@inheritDoc}
      */
-    public function call($method, array $fields = [], array $params = [])
+    public function add(Lead $lead, $registerSonetEvent = false)
     {
-        // TODO: Implement call() method.
+        // TODO: Implement add() method.
     }
 }
