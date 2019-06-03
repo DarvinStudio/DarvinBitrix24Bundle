@@ -10,213 +10,215 @@
 
 namespace Darvin\Bitrix24Bundle\Model\CRM;
 
+use Darvin\Bitrix24Bundle\Model\AbstractModel;
+
 /**
  * Lead
  */
-class Lead
+class Lead extends AbstractModel
 {
     /**
      * Название лида. Обязательное поле.
      *
      * @var string
      */
-    private $title;
+    protected $title;
 
     /**
      * Имя контакта
      *
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * Отчество контакта
      *
      * @var string
      */
-    private $secondName;
+    protected $secondName;
 
     /**
      * Фамилия
      *
      * @var string
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * Название компании
      *
      * @var string
      */
-    private $companyTitle;
+    protected $companyTitle;
 
     /**
      * Идентификатор источника
      *
      * @var string
      */
-    private $sourceId;
+    protected $sourceId;
 
     /**
      * Дополнительно об источнике
      *
      * @var string
      */
-    private $sourceDescription;
+    protected $sourceDescription;
 
     /**
      * Идентификатор статуса лида
      *
      * @var string
      */
-    private $statusId;
+    protected $statusId;
 
     /**
      * Дополнительная информация о статусе
      *
      * @var string
      */
-    private $statusDescription;
+    protected $statusDescription;
 
     /**
      * Должность
      *
      * @var string
      */
-    private $post;
+    protected $post;
 
     /**
      * Улица, дом, корпус, строение
      *
      * @var string
      */
-    private $address;
+    protected $address;
 
     /**
      * Квартира, офис
      *
      * @var string
      */
-    private $address2;
+    protected $address2;
 
     /**
      * Город
      *
      * @var string
      */
-    private $addressCity;
+    protected $addressCity;
 
     /**
      * Почтовый индекс
      *
      * @var string
      */
-    private $addressPostalCode;
+    protected $addressPostalCode;
 
     /**
      * Район
      *
      * @var string
      */
-    private $addressRegion;
+    protected $addressRegion;
 
     /**
      * Область
      *
      * @var string
      */
-    private $addressProvince;
+    protected $addressProvince;
 
     /**
      * Страна
      *
      * @var string
      */
-    private $addressCountry;
+    protected $addressCountry;
 
     /**
      * Код страны
      *
      * @var string
      */
-    private $addressCountryCode;
+    protected $addressCountryCode;
 
     /**
      * Идентификатор валюты
      *
      * @var string
      */
-    private $currencyId;
+    protected $currencyId;
 
     /**
      * Предполагаемая сумма
      *
      * @var string
      */
-    private $opportunity;
+    protected $opportunity;
 
     /**
      * Флаг "Доступен для всех"
      *
-     * @var string
+     * @var bool
      */
-    private $opened;
+    protected $opened;
 
     /**
      * Комментарии
      *
      * @var string
      */
-    private $comments;
+    protected $comments;
 
     /**
      * Ответственный
      *
      * @var string
      */
-    private $assignedById;
+    protected $assignedById;
 
     /**
      * PHONE
      *
      * @var string
      */
-    private $phone;
+    protected $phone;
 
     /**
      * e-mail
      *
      * @var string
      */
-    private $email;
+    protected $email;
 
     /**
      * веб-сайт
      *
      * @var string
      */
-    private $web;
+    protected $web;
 
     /**
      * Контакт в службе обмена мгновенными сообщениями
      *
      * @var string
      */
-    private $im;
+    protected $im;
 
     /**
      * Идентификатор внешней информационной базы. Назначение поля может меняться конечным разработчиком.
      *
      * @var string
      */
-    private $originatorId;
+    protected $originatorId;
 
     /**
      * Внешний ключ, используется для операций обмена. Идентификатор объекта внешней информационной базы. Назначение поля может меняться конечным разработчиком.
      *
      * @var string
      */
-    private $originId;
+    protected $originId;
 
     /**
      * @param string $title Название лида. Обязательное поле.
