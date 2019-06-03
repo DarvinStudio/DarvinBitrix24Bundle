@@ -12,6 +12,8 @@
         }
     ],
     "require": {
+        "darvinstudio/darvin-utils": "*",
+
         "eightpoints/guzzle-bundle": "^6.2"
     },
     "autoload": {

@@ -15,10 +15,10 @@ use Darvin\Utils\Strings\StringsUtil;
 /**
  * Model abstract implementation
  */
-abstract class AbstractModel
+abstract class AbstractModel implements ModelInterface
 {
     /**
-     * @return array
+     * {@inheritDoc}
      */
     public function getData()
     {
@@ -28,18 +28,48 @@ abstract class AbstractModel
             if (null === $value || (is_array($value) && empty($value))) {
                 continue;
             }
-            if (is_bool($value)) {
-                $value = $value ? 'Y' : 'N';
-            }
 
-            preg_match_all('/[a-z]+|\d+/i', StringsUtil::toUnderscore($name), $matches);
-
-            $name = implode('_', $matches[0]);
-            $name = strtoupper($name);
-
-            $data[$name] = $value;
+            $data[$this->prepareName($name)] = $this->prepareValue($value);
         }
 
         return $data;
+    }
+
+    /**
+     * @param string $name Name
+     *
+     * @return string
+     */
+    private function prepareName($name)
+    {
+        preg_match_all('/[a-z]+|\d+/i', StringsUtil::toUnderscore($name), $matches);
+
+        return strtoupper(implode('_', $matches[0]));
+    }
+
+    /**
+     * @param mixed $value Value
+     *
+     * @return mixed
+     */
+    private function prepareValue($value)
+    {
+        if ($value instanceof ModelInterface) {
+            return $value->getData();
+        }
+        if (is_bool($value)) {
+            return $value ? 'Y' : 'N';
+        }
+        if (is_array($value)) {
+            $prepared = [];
+
+            foreach ($value as $key => $item) {
+                $prepared[$key] = $this->prepareValue($item);
+            }
+
+            return $prepared;
+        }
+
+        return $value;
     }
 }
