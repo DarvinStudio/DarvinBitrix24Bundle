@@ -13,12 +13,13 @@ namespace Darvin\Bitrix24Bundle\Client;
 /**
  * Client
  */
-interface Bitrix24ClientInterface
+class Client implements ClientInterface
 {
     /**
-     * @param string $method Method
-     * @param array  $fields Fields
-     * @param array  $params Parameters
+     * {@inheritDoc}
      */
-    public function call($method, array $fields = [], array $params = []);
+    public function call($method, array $fields = [], array $params = [])
+    {
+        // TODO: Implement call() method.
+    }
 }

@@ -10,7 +10,7 @@
 
 namespace Darvin\Bitrix24Bundle\Repository\CRM;
 
-use Darvin\Bitrix24Bundle\Client\Bitrix24ClientInterface;
+use Darvin\Bitrix24Bundle\Client\ClientInterface;
 use Darvin\Bitrix24Bundle\Model\CRM\Lead;
 use Darvin\Bitrix24Bundle\Value\ValueFormatter;
 
@@ -20,14 +20,14 @@ use Darvin\Bitrix24Bundle\Value\ValueFormatter;
 class LeadRepository implements LeadRepositoryInterface
 {
     /**
-     * @var \Darvin\Bitrix24Bundle\Client\Bitrix24ClientInterface
+     * @var \Darvin\Bitrix24Bundle\Client\ClientInterface
      */
     private $client;
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Client\Bitrix24ClientInterface $client Client
+     * @param \Darvin\Bitrix24Bundle\Client\ClientInterface $client Client
      */
-    public function __construct(Bitrix24ClientInterface $client)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
     }
