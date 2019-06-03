@@ -22,6 +22,7 @@ interface LeadRepositoryInterface
      * @param bool                                  $registerSonetEvent Произвести регистрацию события добавления лида в живой ленте.
      *
      * @return mixed
+     * @throws \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
     public function add(Lead $lead, $registerSonetEvent = false);
 }

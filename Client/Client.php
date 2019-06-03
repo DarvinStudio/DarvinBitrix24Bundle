@@ -10,7 +10,7 @@
 
 namespace Darvin\Bitrix24Bundle\Client;
 
-use Darvin\Bitrix24Bundle\Client\Exception\ClientException;
+use Darvin\Bitrix24Bundle\Exception\Bitrix24Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
@@ -75,7 +75,7 @@ class Client implements ClientInterface
      * @param \Psr\Http\Message\ResponseInterface $response Response
      *
      * @return mixed
-     * @throws ClientException
+     * @throws \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
     private function handleResponse(ResponseInterface $response)
     {
@@ -101,7 +101,7 @@ class Client implements ClientInterface
      * @param string|null     $description Error description
      * @param \Exception|null $previous    Previous exception
      *
-     * @return \Darvin\Bitrix24Bundle\Client\Exception\ClientException
+     * @return \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
     private function createException($error = null, $description = null, \Exception $previous = null)
     {
@@ -117,6 +117,6 @@ class Client implements ClientInterface
             $this->logger->error(implode(' ', [__METHOD__, $message]));
         }
 
-        return new ClientException($message, 0, $previous);
+        return new Bitrix24Exception($message, 0, $previous);
     }
 }

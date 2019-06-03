@@ -8,12 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Client\Exception;
+namespace Darvin\Bitrix24Bundle\Exception;
 
 /**
- * Client exception
+ * Exception
  */
-class ClientException extends \Exception
+class Bitrix24Exception extends \Exception
 {
 
 }
