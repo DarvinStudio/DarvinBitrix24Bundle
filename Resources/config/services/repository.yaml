@@ -1,0 +1,9 @@
+parameters:
+    darvin_bitrix24.repository.crm.lead.class: Darvin\Bitrix24Bundle\Repository\CRM\LeadRepository
+
+services:
+    darvin_bitrix24.repository.crm.lead:
+        class:  '%darvin_bitrix24.repository.crm.lead.class%'
+        public: true
+        arguments:
+            - '@darvin_bitrix24.client'

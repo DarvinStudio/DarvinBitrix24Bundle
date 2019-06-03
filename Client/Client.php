@@ -10,16 +10,39 @@
 
 namespace Darvin\Bitrix24Bundle\Client;
 
+use GuzzleHttp\RequestOptions;
+
 /**
  * Client
  */
 class Client implements ClientInterface
 {
     /**
+     * @var \GuzzleHttp\ClientInterface
+     */
+    private $httpClient;
+
+    /**
+     * @param \GuzzleHttp\ClientInterface $httpClient HTTP client
+     */
+    public function __construct(\GuzzleHttp\ClientInterface $httpClient)
+    {
+        $this->httpClient = $httpClient;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function call($method, array $fields = [], array $params = [])
     {
-        // TODO: Implement call() method.
+        $response = $this->httpClient->request('post', $method, [
+            RequestOptions::HTTP_ERRORS => false,
+            RequestOptions::FORM_PARAMS => [
+                'fields' => $fields,
+                'params' => $params,
+            ],
+        ]);
+
+        $content = $response->getBody()->getContents();
     }
 }

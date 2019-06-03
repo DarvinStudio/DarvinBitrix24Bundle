@@ -34,8 +34,14 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
             throw new \RuntimeException('GuzzleBundle is not enabled.');
         }
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+
+        foreach ([
+            'client',
+            'repository',
+        ] as $name) {
+            $loader->load(sprintf('%s.yaml', $name));
+        }
     }
 
     /**

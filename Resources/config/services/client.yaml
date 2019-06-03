@@ -1,0 +1,8 @@
+parameters:
+    darvin_bitrix24.client.class: Darvin\Bitrix24Bundle\Client\Client
+
+services:
+    darvin_bitrix24.client:
+        class: '%darvin_bitrix24.client.class%'
+        arguments:
+            - '@guzzle.client.darvin_bitrix24'
