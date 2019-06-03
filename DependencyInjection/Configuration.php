@@ -28,6 +28,11 @@ class Configuration implements ConfigurationInterface
         $builder = new TreeBuilder();
 
         $root = $builder->root('darvin_bitrix24');
+        $root
+            ->children()
+                ->scalarNode('domain')->isRequired()->cannotBeEmpty()->end()
+                ->integerNode('user_id')->isRequired()->min(1)->end()
+                ->scalarNode('secret')->isRequired()->cannotBeEmpty();
 
         return $builder;
     }
