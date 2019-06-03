@@ -26,10 +26,12 @@ class Contact extends AbstractModel
     protected $valueType;
 
     /**
-     * Contact constructor.
+     * @param string $value Value
      */
-    public function __construct()
+    public function __construct($value)
     {
+        $this->value = $value;
+
         $this->valueType = 'WORK';
     }
 
