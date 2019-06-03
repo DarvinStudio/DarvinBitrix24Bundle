@@ -10,7 +10,12 @@
 
 namespace Darvin\Bitrix24Bundle\Client;
 
+use Darvin\Bitrix24Bundle\Client\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Client
@@ -23,6 +28,11 @@ class Client implements ClientInterface
     private $httpClient;
 
     /**
+     * @var \Psr\Log\LoggerInterface|null
+     */
+    private $logger;
+
+    /**
      * @param \GuzzleHttp\ClientInterface $httpClient HTTP client
      */
     public function __construct(\GuzzleHttp\ClientInterface $httpClient)
@@ -31,18 +41,82 @@ class Client implements ClientInterface
     }
 
     /**
+     * @param \Psr\Log\LoggerInterface|null $logger Logger
+     */
+    public function setLogger(LoggerInterface $logger = null)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function call($method, array $fields = [], array $params = [])
     {
-        $response = $this->httpClient->request('post', $method, [
-            RequestOptions::HTTP_ERRORS => false,
-            RequestOptions::FORM_PARAMS => [
-                'fields' => $fields,
-                'params' => $params,
-            ],
-        ]);
+        try {
+            $response = $this->httpClient->request('post', $method, [
+                RequestOptions::FORM_PARAMS => [
+                    'fields' => $fields,
+                    'params' => $params,
+                ],
+            ]);
+        } catch (GuzzleException $ex) {
+            if ($ex instanceof RequestException && null !== $ex->getResponse()) {
+                return $this->handleResponse($ex->getResponse());
+            }
 
-        $content = $response->getBody()->getContents();
+            throw $this->createException($ex->getMessage(), null, $ex);
+        }
+
+        return $this->handleResponse($response);
+    }
+
+    /**
+     * @param \Psr\Http\Message\ResponseInterface $response Response
+     *
+     * @return mixed
+     * @throws ClientException
+     */
+    private function handleResponse(ResponseInterface $response)
+    {
+        $json = $response->getBody()->getContents();
+
+        $data = json_decode($json, true);
+
+        if (null === $data) {
+            throw $this->createException(sprintf('Unable to decode response "%s" as JSON', $json), json_last_error_msg());
+        }
+        if (isset($data['error']) || isset($data['error_description'])) {
+            throw $this->createException(
+                isset($data['error']) ? $data['error'] : null,
+                isset($data['error_description']) ? $data['error_description'] : null
+            );
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param string|null     $error       Error
+     * @param string|null     $description Error description
+     * @param \Exception|null $previous    Previous exception
+     *
+     * @return \Darvin\Bitrix24Bundle\Client\Exception\ClientException
+     */
+    private function createException($error = null, $description = null, \Exception $previous = null)
+    {
+        $error       = (string)$error;
+        $description = (string)$description;
+
+        if ('' !== $error && '' !== $description) {
+            $message = sprintf('%s: %s.', $error, $description);
+        } else {
+            $message = '' !== $error ? $error : $description;
+        }
+        if (null !== $this->logger) {
+            $this->logger->error(implode(' ', [__METHOD__, $message]));
+        }
+
+        return new ClientException($message, 0, $previous);
     }
 }

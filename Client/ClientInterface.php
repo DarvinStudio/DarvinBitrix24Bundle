@@ -19,6 +19,9 @@ interface ClientInterface
      * @param string $method Method
      * @param array  $fields Fields
      * @param array  $params Parameters
+     *
+     * @return mixed
+     * @throws \Darvin\Bitrix24Bundle\Client\Exception\ClientException
      */
     public function call($method, array $fields = [], array $params = []);
 }

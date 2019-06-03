@@ -12,6 +12,8 @@
         }
     ],
     "require": {
+        "ext-json": "*",
+
         "darvinstudio/darvin-utils": "*",
 
         "eightpoints/guzzle-bundle": "^6.2"
