@@ -27,6 +27,12 @@ class DarvinBitrix24Extension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $bundles = $container->getParameter('kernel.bundles');
+
+        if (!isset($bundles['GuzzleBundle'])) {
+            throw new \RuntimeException('GuzzleBundle is not enabled.');
+        }
+
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
