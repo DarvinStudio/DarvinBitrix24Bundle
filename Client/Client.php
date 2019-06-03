@@ -65,7 +65,7 @@ class Client implements ClientInterface
                 return $this->handleResponse($ex->getResponse());
             }
 
-            throw $this->createException($ex->getMessage(), null, $ex);
+            throw $this->handleError($ex->getMessage(), null, $ex);
         }
 
         return $this->handleResponse($response);
@@ -84,10 +84,10 @@ class Client implements ClientInterface
         $data = json_decode($json, true);
 
         if (null === $data) {
-            throw $this->createException(sprintf('Unable to decode response "%s" as JSON', $json), json_last_error_msg());
+            throw $this->handleError(sprintf('Unable to decode response "%s" as JSON', $json), json_last_error_msg());
         }
         if (isset($data['error']) || isset($data['error_description'])) {
-            throw $this->createException(
+            throw $this->handleError(
                 isset($data['error']) ? $data['error'] : null,
                 isset($data['error_description']) ? $data['error_description'] : null
             );
@@ -103,7 +103,7 @@ class Client implements ClientInterface
      *
      * @return \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    private function createException($error = null, $description = null, \Exception $previous = null)
+    private function handleError($error = null, $description = null, \Exception $previous = null)
     {
         $error       = (string)$error;
         $description = (string)$description;
