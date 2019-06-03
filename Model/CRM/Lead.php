@@ -228,6 +228,7 @@ class Lead extends AbstractModel
     {
         $this->title = $title;
 
+        $this->opened = true;
         $this->phone = $this->email = [];
     }
 
