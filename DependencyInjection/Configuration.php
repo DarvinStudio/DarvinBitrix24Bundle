@@ -32,7 +32,10 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('domain')->isRequired()->cannotBeEmpty()->end()
                 ->integerNode('user_id')->isRequired()->min(1)->end()
-                ->scalarNode('secret')->isRequired()->cannotBeEmpty();
+                ->scalarNode('secret')->isRequired()->cannotBeEmpty()->end()
+                ->arrayNode('http_client')->addDefaultsIfNotSet()
+                    ->children()
+                        ->integerNode('timeout')->defaultValue(3)->min(1);
 
         return $builder;
     }
