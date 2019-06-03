@@ -10,6 +10,7 @@
 
 namespace Darvin\Bitrix24Bundle\Model;
 
+use Darvin\Bitrix24Bundle\Value\ValueFormatter;
 use Darvin\Utils\Strings\StringsUtil;
 
 /**
@@ -29,7 +30,7 @@ abstract class AbstractModel implements ModelInterface
                 continue;
             }
 
-            $data[$this->prepareName($name)] = $this->prepareValue($value);
+            $data[$this->formatName($name)] = ValueFormatter::format($value);
         }
 
         return $data;
@@ -40,36 +41,10 @@ abstract class AbstractModel implements ModelInterface
      *
      * @return string
      */
-    private function prepareName($name)
+    private function formatName($name)
     {
         preg_match_all('/[a-z]+|\d+/i', StringsUtil::toUnderscore($name), $matches);
 
         return strtoupper(implode('_', $matches[0]));
-    }
-
-    /**
-     * @param mixed $value Value
-     *
-     * @return mixed
-     */
-    private function prepareValue($value)
-    {
-        if ($value instanceof ModelInterface) {
-            return $value->getFields();
-        }
-        if (is_bool($value)) {
-            return $value ? 'Y' : 'N';
-        }
-        if (is_array($value)) {
-            $prepared = [];
-
-            foreach ($value as $key => $item) {
-                $prepared[$key] = $this->prepareValue($item);
-            }
-
-            return $prepared;
-        }
-
-        return $value;
     }
 }
