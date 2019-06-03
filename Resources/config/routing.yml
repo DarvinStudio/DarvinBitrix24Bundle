@@ -1,0 +1,3 @@
+darvin_bitrix24_homepage:
+    path:     /
+    defaults: { _controller: DarvinBitrix24Bundle:Default:index }
