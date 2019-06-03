@@ -10,7 +10,9 @@
 
 namespace Darvin\Bitrix24Bundle\Repository\CRM;
 
+use Darvin\Bitrix24Bundle\Client\Bitrix24ClientInterface;
 use Darvin\Bitrix24Bundle\Model\CRM\Lead;
+use Darvin\Bitrix24Bundle\Value\ValueFormatter;
 
 /**
  * Lead repository
@@ -18,10 +20,25 @@ use Darvin\Bitrix24Bundle\Model\CRM\Lead;
 class LeadRepository implements LeadRepositoryInterface
 {
     /**
+     * @var \Darvin\Bitrix24Bundle\Client\Bitrix24ClientInterface
+     */
+    private $client;
+
+    /**
+     * @param \Darvin\Bitrix24Bundle\Client\Bitrix24ClientInterface $client Client
+     */
+    public function __construct(Bitrix24ClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function add(Lead $lead, $registerSonetEvent = false)
     {
-        // TODO: Implement add() method.
+        $this->client->call('crm.lead.add', $lead->getFields(), [
+            'REGISTER_SONET_EVENT' => ValueFormatter::format($registerSonetEvent),
+        ]);
     }
 }
