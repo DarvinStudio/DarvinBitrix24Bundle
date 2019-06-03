@@ -18,5 +18,5 @@ interface ModelInterface
     /**
      * @return array
      */
-    public function getData();
+    public function getFields();
 }

@@ -20,7 +20,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * {@inheritDoc}
      */
-    public function getData()
+    public function getFields()
     {
         $data = [];
 
@@ -55,7 +55,7 @@ abstract class AbstractModel implements ModelInterface
     private function prepareValue($value)
     {
         if ($value instanceof ModelInterface) {
-            return $value->getData();
+            return $value->getFields();
         }
         if (is_bool($value)) {
             return $value ? 'Y' : 'N';
