@@ -1,4 +1,12 @@
 <?php
+/**
+ * @author    Darvin Studio <info@darvin-studio.ru>
+ * @copyright Copyright (c) 2019, Darvin Studio
+ * @link      https://www.darvin-studio.ru
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Darvin\Bitrix24Bundle\DependencyInjection;
 
@@ -13,17 +21,14 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('darvin_bitrix24');
+        $builder = new TreeBuilder();
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $root = $builder->root('darvin_bitrix24');
 
-        return $treeBuilder;
+        return $builder;
     }
 }
