@@ -19,6 +19,13 @@ use Darvin\Bitrix24Bundle\Model\Contact;
 class Lead extends AbstractModel
 {
     /**
+     * Идентификатор лида.
+     *
+     * @var string
+     */
+    protected $id;
+
+    /**
      * Название лида. Обязательное поле.
      *
      * @var string
@@ -180,6 +187,55 @@ class Lead extends AbstractModel
     protected $assignedById;
 
     /**
+     * Создан
+     *
+     * @var string
+     */
+    protected $createdById;
+
+    /**
+     * Изменен
+     *
+     * @var string
+     */
+    protected $modifyById;
+
+    /**
+     * Дата создания
+     *
+     * @var string
+     */
+    protected $dateCreate;
+
+    /**
+     * Дата изменения
+     *
+     * @var string
+     */
+    protected $dateModify;
+
+    /**
+     * Идентификатор компании
+     *
+     * @var string
+     */
+    protected $companyId;
+
+    /**
+     * Идентификатор контакта
+     *
+     * @var string
+     */
+    protected $contactId;
+
+    /**
+     * Дата закрытия
+     *
+     * @var string
+     */
+    protected $dateClosed;
+
+    /**
      * PHONE
      *
      * @var \Darvin\Bitrix24Bundle\Model\Contact[]
@@ -230,6 +286,18 @@ class Lead extends AbstractModel
 
         $this->opened = true;
         $this->phone = $this->email = [];
+    }
+
+    /**
+     * @param string $id id
+     *
+     * @return Lead
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -504,6 +572,90 @@ class Lead extends AbstractModel
     public function setAssignedById($assignedById)
     {
         $this->assignedById = $assignedById;
+
+        return $this;
+    }
+
+    /**
+     * @param string $createdById createdById
+     *
+     * @return Lead
+     */
+    public function setCreatedById($createdById)
+    {
+        $this->createdById = $createdById;
+
+        return $this;
+    }
+
+    /**
+     * @param string $modifyById modifyById
+     *
+     * @return Lead
+     */
+    public function setModifyById($modifyById)
+    {
+        $this->modifyById = $modifyById;
+
+        return $this;
+    }
+
+    /**
+     * @param string $dateCreate dateCreate
+     *
+     * @return Lead
+     */
+    public function setDateCreate($dateCreate)
+    {
+        $this->dateCreate = $dateCreate;
+
+        return $this;
+    }
+
+    /**
+     * @param string $dateModify dateModify
+     *
+     * @return Lead
+     */
+    public function setDateModify($dateModify)
+    {
+        $this->dateModify = $dateModify;
+
+        return $this;
+    }
+
+    /**
+     * @param string $companyId companyId
+     *
+     * @return Lead
+     */
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $contactId contactId
+     *
+     * @return Lead
+     */
+    public function setContactId($contactId)
+    {
+        $this->contactId = $contactId;
+
+        return $this;
+    }
+
+    /**
+     * @param string $dateClosed dateClosed
+     *
+     * @return Lead
+     */
+    public function setDateClosed($dateClosed)
+    {
+        $this->dateClosed = $dateClosed;
 
         return $this;
     }
