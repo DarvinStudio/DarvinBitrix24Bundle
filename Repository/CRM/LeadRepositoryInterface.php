@@ -24,5 +24,5 @@ interface LeadRepositoryInterface
      * @return mixed
      * @throws \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    public function add(Lead $lead, $registerSonetEvent = false);
+    public function add(Lead $lead, $registerSonetEvent = true);
 }

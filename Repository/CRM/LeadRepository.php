@@ -35,7 +35,7 @@ class LeadRepository implements LeadRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function add(Lead $lead, $registerSonetEvent = false)
+    public function add(Lead $lead, $registerSonetEvent = true)
     {
         return $this->client->call('crm.lead.add', $lead->getFields(), [
             'REGISTER_SONET_EVENT' => ValueFormatter::format($registerSonetEvent),
