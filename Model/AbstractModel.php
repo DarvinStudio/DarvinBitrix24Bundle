@@ -26,7 +26,7 @@ abstract class AbstractModel implements ModelInterface
         $data = [];
 
         foreach (get_object_vars($this) as $name => $value) {
-            if (null === $value || (is_array($value) && empty($value))) {
+            if (null === $value || '' === $value || (is_array($value) && empty($value))) {
                 continue;
             }
 
