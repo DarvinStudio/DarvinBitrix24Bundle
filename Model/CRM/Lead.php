@@ -252,14 +252,14 @@ class Lead extends AbstractModel
     /**
      * веб-сайт
      *
-     * @var string
+     * @var \Darvin\Bitrix24Bundle\Model\Contact[]
      */
     protected $web;
 
     /**
      * Контакт в службе обмена мгновенными сообщениями
      *
-     * @var string
+     * @var \Darvin\Bitrix24Bundle\Model\Contact[]
      */
     protected $im;
 
@@ -285,7 +285,7 @@ class Lead extends AbstractModel
         $this->title = $title;
 
         $this->opened = true;
-        $this->phone = $this->email = [];
+        $this->phone = $this->email = $this->web = $this->im = [];
     }
 
     /**
@@ -661,73 +661,129 @@ class Lead extends AbstractModel
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Model\Contact[] $phone phone
+     * @param mixed $phone phone
      *
      * @return Lead
      */
-    public function setPhone(array $phone)
+    public function setPhone($phone)
     {
+        if (is_scalar($phone)) {
+            $phone = [new Contact($phone)];
+        }
+
         $this->phone = $phone;
 
         return $this;
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Model\Contact $phone phone
+     * @param mixed $phone phone
      *
      * @return Lead
      */
-    public function addPhone(Contact $phone)
+    public function addPhone($phone)
     {
+        if (is_scalar($phone)) {
+            $phone = new Contact($phone);
+        }
+
         $this->phone[] = $phone;
 
         return $this;
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Model\Contact[] $email email
+     * @param mixed $email email
      *
      * @return Lead
      */
-    public function setEmail(array $email)
+    public function setEmail($email)
     {
+        if (is_scalar($email)) {
+            $email = [new Contact($email)];
+        }
+
         $this->email = $email;
 
         return $this;
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Model\Contact $email email
+     * @param mixed $email email
      *
      * @return Lead
      */
-    public function addEmail(Contact $email)
+    public function addEmail($email)
     {
+        if (is_scalar($email)) {
+            $email = new Contact($email);
+        }
+
         $this->email[] = $email;
 
         return $this;
     }
 
     /**
-     * @param string $web web
+     * @param mixed $web web
      *
      * @return Lead
      */
     public function setWeb($web)
     {
+        if (is_scalar($web)) {
+            $web = [new Contact($web)];
+        }
+
         $this->web = $web;
 
         return $this;
     }
 
     /**
-     * @param string $im im
+     * @param mixed $web web
+     *
+     * @return Lead
+     */
+    public function addWeb($web)
+    {
+        if (is_scalar($web)) {
+            $web = new Contact($web);
+        }
+
+        $this->web[] = $web;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $im im
      *
      * @return Lead
      */
     public function setIm($im)
     {
+        if (is_scalar($im)) {
+            $im = [new Contact($im)];
+        }
+
         $this->im = $im;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $im im
+     *
+     * @return Lead
+     */
+    public function addIm($im)
+    {
+        if (is_scalar($im)) {
+            $im = new Contact($im);
+        }
+
+        $this->im[] = $im;
 
         return $this;
     }
