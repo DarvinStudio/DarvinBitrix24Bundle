@@ -36,8 +36,8 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (!isset($bundles['GuzzleBundle'])) {
-            throw new \RuntimeException('GuzzleBundle is not enabled.');
+        if (!isset($bundles['EightPointsGuzzleBundle'])) {
+            throw new \RuntimeException('EightPointsGuzzleBundle is not enabled.');
         }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
@@ -57,14 +57,14 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
     {
         $config = $this->processConfiguration(
             new Configuration(),
-            $container->getParameterBag()->resolveValue($container->getExtensionConfig($this->getAlias()))
+            $container->resolveEnvPlaceholders($container->getParameterBag()->resolveValue($container->getExtensionConfig($this->getAlias())))
         );
 
         if (!$config['account']['enabled']) {
             return;
         }
 
-        $container->prependExtensionConfig('guzzle', [
+        $container->prependExtensionConfig('eight_points_guzzle', [
             'clients' => [
                 $this->getAlias() => [
                     'base_url' => sprintf('https://%s/rest/%d/%s/', $config['account']['domain'], $config['account']['user_id'], $config['account']['secret']),

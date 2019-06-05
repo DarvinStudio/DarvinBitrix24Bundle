@@ -5,6 +5,6 @@ services:
     darvin_bitrix24.client:
         class: '%darvin_bitrix24.client.class%'
         arguments:
-            - '@guzzle.client.darvin_bitrix24'
+            - '@eight_points_guzzle.client.darvin_bitrix24'
         calls:
             - [ setLogger, [ '@?logger' ] ]
