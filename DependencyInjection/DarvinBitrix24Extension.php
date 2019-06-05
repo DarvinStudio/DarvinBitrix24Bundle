@@ -62,7 +62,7 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
         $container->prependExtensionConfig('eight_points_guzzle', [
             'clients' => [
                 $this->getAlias() => [
-                    'base_url' => sprintf('https://%s/rest/%d/%s/', $config['account']['domain'], $config['account']['user_id'], $config['account']['secret']),
+                    'base_url' => sprintf('https://%s/rest/%s/%s/', $config['account']['domain'], $config['account']['user_id'], $config['account']['secret']),
                     'options'  => [
                         'connect_timeout' => $config['http_client']['timeout'],
                         'timeout'         => $config['http_client']['timeout'],
