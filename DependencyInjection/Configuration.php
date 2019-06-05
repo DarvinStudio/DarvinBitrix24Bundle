@@ -33,13 +33,13 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('account')->canBeEnabled()
                     ->children()
                         ->scalarNode('domain')->isRequired()->cannotBeEmpty()->end()
-                        ->integerNode('user_id')->isRequired()->min(1)->end()
+                        ->scalarNode('user_id')->isRequired()->end()
                         ->scalarNode('secret')->isRequired()->cannotBeEmpty()->end()
                     ->end()
                 ->end()
                 ->arrayNode('http_client')->addDefaultsIfNotSet()
                     ->children()
-                        ->integerNode('timeout')->defaultValue(3)->min(1);
+                        ->scalarNode('timeout')->defaultValue(3);
 
         return $builder;
     }
