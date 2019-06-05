@@ -16,7 +16,7 @@
 
         "darvinstudio/darvin-utils": "*",
 
-        "eightpoints/guzzle-bundle": "^6.2||^7.5"
+        "eightpoints/guzzle-bundle": "^7.5"
     },
     "autoload": {
         "psr-4": { "Darvin\\Bitrix24Bundle\\": "" }
