@@ -30,9 +30,13 @@ class Configuration implements ConfigurationInterface
         $root = $builder->root('darvin_bitrix24');
         $root
             ->children()
-                ->scalarNode('domain')->isRequired()->cannotBeEmpty()->end()
-                ->integerNode('user_id')->isRequired()->min(1)->end()
-                ->scalarNode('secret')->isRequired()->cannotBeEmpty()->end()
+                ->arrayNode('account')->canBeEnabled()
+                    ->children()
+                        ->scalarNode('domain')->isRequired()->cannotBeEmpty()->end()
+                        ->integerNode('user_id')->isRequired()->min(1)->end()
+                        ->scalarNode('secret')->isRequired()->cannotBeEmpty()->end()
+                    ->end()
+                ->end()
                 ->arrayNode('http_client')->addDefaultsIfNotSet()
                     ->children()
                         ->integerNode('timeout')->defaultValue(3)->min(1);

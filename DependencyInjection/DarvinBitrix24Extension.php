@@ -28,6 +28,12 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
+        if (!$config['account']['enabled']) {
+            return;
+        }
+
         $bundles = $container->getParameter('kernel.bundles');
 
         if (!isset($bundles['GuzzleBundle'])) {
@@ -54,10 +60,14 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
             $container->getParameterBag()->resolveValue($container->getExtensionConfig($this->getAlias()))
         );
 
+        if (!$config['account']['enabled']) {
+            return;
+        }
+
         $container->prependExtensionConfig('guzzle', [
             'clients' => [
                 $this->getAlias() => [
-                    'base_url' => sprintf('https://%s/rest/%d/%s/', $config['domain'], $config['user_id'], $config['secret']),
+                    'base_url' => sprintf('https://%s/rest/%d/%s/', $config['account']['domain'], $config['account']['user_id'], $config['account']['secret']),
                     'options'  => [
                         'connect_timeout' => $config['http_client']['timeout'],
                         'timeout'         => $config['http_client']['timeout'],
