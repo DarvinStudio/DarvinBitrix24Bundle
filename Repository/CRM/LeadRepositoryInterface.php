@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2019, Darvin Studio
@@ -24,5 +24,5 @@ interface LeadRepositoryInterface
      * @return mixed
      * @throws \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    public function add(Lead $lead, $registerSonetEvent = true);
+    public function add(Lead $lead, bool $registerSonetEvent = true);
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2019, Darvin Studio
@@ -43,7 +43,7 @@ class Client implements ClientInterface
     /**
      * @param \Psr\Log\LoggerInterface|null $logger Logger
      */
-    public function setLogger(LoggerInterface $logger = null)
+    public function setLogger(?LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
@@ -51,7 +51,7 @@ class Client implements ClientInterface
     /**
      * {@inheritDoc}
      */
-    public function call($method, array $fields = [], array $params = [])
+    public function call(string $method, array $fields = [], array $params = [])
     {
         try {
             $response = $this->httpClient->request('post', $method, [
@@ -88,8 +88,8 @@ class Client implements ClientInterface
         }
         if (isset($data['error']) || isset($data['error_description'])) {
             throw $this->handleError(
-                isset($data['error']) ? $data['error'] : null,
-                isset($data['error_description']) ? $data['error_description'] : null
+                isset($data['error']) ? (string)$data['error'] : null,
+                isset($data['error_description']) ? (string)$data['error_description'] : null
             );
         }
 
@@ -103,7 +103,7 @@ class Client implements ClientInterface
      *
      * @return \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    private function handleError($error = null, $description = null, \Exception $previous = null)
+    private function handleError(?string $error = null, ?string $description = null, ?\Exception $previous = null): Bitrix24Exception
     {
         $error       = (string)$error;
         $description = (string)$description;

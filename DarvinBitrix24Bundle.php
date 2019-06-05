@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Darvin Studio <info@darvin-studio.ru>
  * @copyright Copyright (c) 2019, Darvin Studio

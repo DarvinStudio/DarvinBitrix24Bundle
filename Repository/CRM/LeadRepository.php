@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2019, Darvin Studio
@@ -35,7 +35,7 @@ class LeadRepository implements LeadRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function add(Lead $lead, $registerSonetEvent = true)
+    public function add(Lead $lead, bool $registerSonetEvent = true)
     {
         return $this->client->call('crm.lead.add', $lead->getFields(), [
             'REGISTER_SONET_EVENT' => ValueFormatter::format($registerSonetEvent),

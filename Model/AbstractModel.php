@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2019, Darvin Studio
@@ -21,7 +21,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * {@inheritDoc}
      */
-    public function getFields()
+    public function getFields(): array
     {
         $data = [];
 
@@ -41,7 +41,7 @@ abstract class AbstractModel implements ModelInterface
      *
      * @return string
      */
-    private function formatName($name)
+    private function formatName(string $name): string
     {
         preg_match_all('/[a-z]+|\d+/i', StringsUtil::toUnderscore($name), $matches);
 

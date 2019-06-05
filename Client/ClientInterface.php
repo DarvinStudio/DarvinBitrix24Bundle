@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Igor Nikolaev <igor.sv.n@gmail.com>
  * @copyright Copyright (c) 2019, Darvin Studio
@@ -23,5 +23,5 @@ interface ClientInterface
      * @return mixed
      * @throws \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    public function call($method, array $fields = [], array $params = []);
+    public function call(string $method, array $fields = [], array $params = []);
 }

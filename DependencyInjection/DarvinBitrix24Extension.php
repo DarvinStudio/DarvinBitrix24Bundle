@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author    Darvin Studio <info@darvin-studio.ru>
  * @copyright Copyright (c) 2019, Darvin Studio
@@ -26,7 +26,7 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
     /**
      * {@inheritDoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
@@ -53,7 +53,7 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
     /**
      * {@inheritDoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $config = $this->processConfiguration(
             new Configuration(),
