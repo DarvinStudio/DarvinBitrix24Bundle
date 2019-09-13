@@ -45,6 +45,7 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
         foreach ([
             'client',
             'repository',
+            'utm',
         ] as $name) {
             $loader->load(sprintf('%s.yaml', $name));
         }

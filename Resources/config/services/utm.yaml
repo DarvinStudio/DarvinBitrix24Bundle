@@ -1,0 +1,12 @@
+parameters:
+    darvin_bitrix24.model.utm.class: Darvin\Bitrix24Bundle\Model\UTM
+
+    darvin_bitrix24.subscriber.utm.class: Darvin\Bitrix24Bundle\EventListener\UTMSubscriber
+
+services:
+    AppBundle\EventListener\UTMSubscriber:
+        class: '%darvin_bitrix24.subscriber.utm.class%'
+        public: true
+        arguments:
+            - '%darvin_bitrix24.model.utm.class%'
+        tags: [ kernel.event_subscriber ]
