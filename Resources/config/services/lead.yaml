@@ -3,7 +3,7 @@ parameters:
 
 services:
     darvin_bitrix24.lead_factory:
-        class: '%darvin_order.bitrix24.lead_factory.class%'
+        class: '%darvin_bitrix24.lead_factory.class%'
         public: true
         arguments:
             - '@darvin_bitrix24.utm.utm_manager'
