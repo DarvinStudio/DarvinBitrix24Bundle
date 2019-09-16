@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Factory;
+namespace Darvin\Bitrix24Bundle\Lead;
 
 /**
  * Bitrix24 lead factory

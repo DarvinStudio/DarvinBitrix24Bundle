@@ -11,15 +11,15 @@
 namespace Darvin\Bitrix24Bundle\UTM;
 
 use Darvin\Bitrix24Bundle\Model\UTM;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Bitrix24 lead factory
  */
-class UTMManager
+class UTMManager implements UTMManagerInterface
 {
     /**
-     * @var \Symfony\Component\HttpFoundation\Session\Session
+     * @var \Symfony\Component\HttpFoundation\Session\SesSessionInterfacesion
      */
     protected $session;
 
@@ -29,33 +29,33 @@ class UTMManager
     protected static $KEY = 'utm';
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Session\Session $session Session
+     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session Session
      */
-    public function __construct(Session $session)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
     }
 
     /**
-     * @return UTM|null
+     * {@inheritDoc}
      */
-    public function get()
+    public function getUTM()
     {
         return $this->session->get(self::$KEY);
     }
 
     /**
-     * @param UTM $utm UTM
+     * {@inheritDoc}
      */
-    public function set(UTM $utm)
+    public function setUTM(UTM $utm)
     {
         $this->session->set(self::$KEY, $utm);
     }
 
     /**
-     * @return bool
+     * {@inheritDoc}
      */
-    public function has()
+    public function hasUTM()
     {
         return $this->session->has(self::$KEY);
     }

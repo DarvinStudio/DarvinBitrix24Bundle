@@ -11,7 +11,7 @@
 namespace Darvin\Bitrix24Bundle\EventListener;
 
 use Darvin\Bitrix24Bundle\Model\UTM;
-use Darvin\Bitrix24Bundle\UTM\UTMManager;
+use Darvin\Bitrix24Bundle\UTM\UTMManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -19,17 +19,19 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Compress response event subscriber
  */
-class UTMSubscriber implements EventSubscriberInterface
+class SetUTMSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var \Darvin\Bitrix24Bundle\UTM\UTMManager
+     * @var \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface
      */
     protected $utmManager;
 
+    protected static $PREFIX = 'utm_';
+
     /**
-     * @param \Darvin\Bitrix24Bundle\UTM\UTMManager $utmManager UTM Manager
+     * @param \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface $utmManager UTM Manager
      */
-    public function __construct(UTMManager $utmManager)
+    public function __construct(UTMManagerInterface $utmManager)
     {
         $this->utmManager = $utmManager;
     }
@@ -49,12 +51,24 @@ class UTMSubscriber implements EventSubscriberInterface
      */
     public function createUTM(GetResponseEvent $event)
     {
-        $request = $event->getRequest();
+        $set = false;
+        $utm = new UTM();
 
-        $parameters = array_intersect_key($request->query->all(), UTM::getRelations());
+        foreach ($event->getRequest()->query->all() as $name => $value) {
+            if (0 !== strpos($name, self::$PREFIX)) {
+                continue;
+            }
 
-        if (!empty($parameters)) {
-            $this->utmManager->set(new UTM($parameters));
+            $method = sprintf('set%s', ucfirst(preg_replace(sprintf('/^%s/', self::$PREFIX), '', $name)));
+
+            if (method_exists($utm, $method)) {
+                $utm->$method($value);
+
+                $set = true;
+            }
+        }
+        if ($set) {
+            $this->utmManager->setUTM($utm);
         }
     }
 }

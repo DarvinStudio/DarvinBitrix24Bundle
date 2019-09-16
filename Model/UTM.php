@@ -11,7 +11,7 @@
 namespace Darvin\Bitrix24Bundle\Model;
 
 /**
- * Lead
+ * Urchin Tracking Module
  */
 class UTM
 {
@@ -49,36 +49,6 @@ class UTM
      * @var string
      */
     protected $term;
-
-    protected static $RELATIONS = [
-        'utm_campaign' => 'campaign',
-        'utm_content'  => 'content',
-        'utm_medium'   => 'medium',
-        'utm_source'   => 'source',
-        'utm_term'     => 'term',
-    ];
-
-    /**
-     * UTM constructor.
-     *
-     * @param array $parameters Parameters
-     */
-    public function __construct(array $parameters)
-    {
-        foreach (self::getRelations() as $key => $value) {
-            if (isset($parameters[$key])) {
-                $this->{$value} = $parameters[$key];
-            }
-        }
-    }
-
-    /**
-     * @return array
-     */
-    public static function getRelations()
-    {
-        return self::$RELATIONS;
-    }
 
     /**
      * @return string
