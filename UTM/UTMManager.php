@@ -10,7 +10,7 @@
 
 namespace Darvin\Bitrix24Bundle\UTM;
 
-use Darvin\Bitrix24Bundle\Model\UTM;
+use Darvin\Bitrix24Bundle\UTM\Model\UTM;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**

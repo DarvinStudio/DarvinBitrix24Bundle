@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Model;
+namespace Darvin\Bitrix24Bundle\UTM\Model;
 
 /**
  * Urchin Tracking Module
@@ -18,40 +18,40 @@ class UTM
     /**
      * Обозначение рекламной кампании UTM_CAMPAIGN
      *
-     * @var string
+     * @var string|null
      */
-    protected $campaign;
+    private $campaign;
 
     /**
      * Содержание кампании UTM_CONTENT
      *
-     * @var string
+     * @var string|null
      */
-    protected $content;
+    private $content;
 
     /**
      * Тип трафика UTM_MEDIUM
      *
-     * @var string
+     * @var string|null
      */
-    protected $medium;
+    private $medium;
 
     /**
      * Рекламная система UTM_SOURCE
      *
-     * @var string
+     * @var string|null
      */
-    protected $source;
+    private $source;
 
     /**
      * Условие поиска кампании UTM_TERM
      *
-     * @var string
+     * @var string|null
      */
-    protected $term;
+    private $term;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCampaign()
     {
@@ -59,7 +59,7 @@ class UTM
     }
 
     /**
-     * @param string $campaign
+     * @param string|null $campaign
      *
      * @return UTM
      */
@@ -71,7 +71,7 @@ class UTM
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getContent()
     {
@@ -79,7 +79,7 @@ class UTM
     }
 
     /**
-     * @param string $content
+     * @param string|null $content
      *
      * @return UTM
      */
@@ -91,7 +91,7 @@ class UTM
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMedium()
     {
@@ -99,7 +99,7 @@ class UTM
     }
 
     /**
-     * @param string $medium
+     * @param string|null $medium
      *
      * @return UTM
      */
@@ -111,7 +111,7 @@ class UTM
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSource()
     {
@@ -119,7 +119,7 @@ class UTM
     }
 
     /**
-     * @param string $source
+     * @param string|null $source
      *
      * @return UTM
      */
@@ -131,7 +131,7 @@ class UTM
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTerm()
     {
@@ -139,7 +139,7 @@ class UTM
     }
 
     /**
-     * @param string $term
+     * @param string|null $term
      *
      * @return UTM
      */

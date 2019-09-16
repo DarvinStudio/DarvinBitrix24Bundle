@@ -10,7 +10,7 @@
 
 namespace Darvin\Bitrix24Bundle\EventListener;
 
-use Darvin\Bitrix24Bundle\Model\UTM;
+use Darvin\Bitrix24Bundle\UTM\Model\UTM;
 use Darvin\Bitrix24Bundle\UTM\UTMManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
