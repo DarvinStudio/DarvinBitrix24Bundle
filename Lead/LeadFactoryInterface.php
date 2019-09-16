@@ -11,7 +11,7 @@
 namespace Darvin\Bitrix24Bundle\Lead;
 
 /**
- * Bitrix24 lead factory
+ * Lead factory
  */
 interface LeadFactoryInterface
 {

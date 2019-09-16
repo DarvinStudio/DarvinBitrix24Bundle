@@ -14,7 +14,7 @@ use Darvin\Bitrix24Bundle\Model\CRM\Lead;
 use Darvin\Bitrix24Bundle\UTM\UTMManagerInterface;
 
 /**
- * Bitrix24 lead factory
+ * Lead factory
  */
 class LeadFactory implements LeadFactoryInterface
 {
