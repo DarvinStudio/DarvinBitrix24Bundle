@@ -8,22 +8,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Model;
+namespace Darvin\Bitrix24Bundle\Factory;
 
 /**
- * Lead
+ * Bitrix24 lead factory
  */
-interface UTMInterface
+interface LeadFactoryInterface
 {
     /**
-     * @return array
-     */
-    public static function getRelations();
-
-    /**
-     * UTMInterface constructor.
+     * @param string|null $title Lead title
      *
-     * @param array $parameters
+     * @return \Darvin\Bitrix24Bundle\Model\CRM\Lead
+     * @throws \InvalidArgumentException
      */
-    public function __construct(array $parameters);
+    public function createLead($title);
 }

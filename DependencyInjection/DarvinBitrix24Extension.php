@@ -44,6 +44,7 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
 
         foreach ([
             'client',
+            'lead',
             'repository',
             'utm',
         ] as $name) {

@@ -13,7 +13,7 @@ namespace Darvin\Bitrix24Bundle\Model;
 /**
  * Lead
  */
-class UTM extends AbstractModel implements UTMInterface
+class UTM
 {
     /**
      * Обозначение рекламной кампании UTM_CAMPAIGN

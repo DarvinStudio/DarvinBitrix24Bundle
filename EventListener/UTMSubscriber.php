@@ -10,6 +10,8 @@
 
 namespace Darvin\Bitrix24Bundle\EventListener;
 
+use Darvin\Bitrix24Bundle\Model\UTM;
+use Darvin\Bitrix24Bundle\UTM\UTMManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -20,18 +22,16 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class UTMSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var string
+     * @var \Darvin\Bitrix24Bundle\UTM\UTMManager
      */
-    private $utmClass;
+    protected $utmManager;
 
     /**
-     * UTMSubscriber constructor.
-     *
-     * @param string $utmClass
+     * @param \Darvin\Bitrix24Bundle\UTM\UTMManager $utmManager UTM Manager
      */
-    public function __construct($utmClass)
+    public function __construct(UTMManager $utmManager)
     {
-        $this->utmClass = $utmClass;
+        $this->utmManager = $utmManager;
     }
 
     /**
@@ -51,10 +51,10 @@ class UTMSubscriber implements EventSubscriberInterface
     {
         $request = $event->getRequest();
 
-        $parameters = array_intersect_key($request->query->all(), $this->utmClass::getRelations());
+        $parameters = array_intersect_key($request->query->all(), UTM::getRelations());
 
         if (!empty($parameters)) {
-            $request->getSession()->set('utm', new $this->utmClass($parameters));
+            $this->utmManager->set(new UTM($parameters));
         }
     }
 }
