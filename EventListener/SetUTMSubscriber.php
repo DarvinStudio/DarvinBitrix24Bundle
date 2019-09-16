@@ -17,19 +17,19 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Compress response event subscriber
+ * Set UTM event subscriber
  */
 class SetUTMSubscriber implements EventSubscriberInterface
 {
+    const PARAM_PREFIX = 'utm_';
+
     /**
      * @var \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface
      */
-    protected $utmManager;
-
-    protected static $PREFIX = 'utm_';
+    private $utmManager;
 
     /**
-     * @param \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface $utmManager UTM Manager
+     * @param \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface $utmManager UTM manager
      */
     public function __construct(UTMManagerInterface $utmManager)
     {
@@ -37,29 +37,29 @@ class SetUTMSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::REQUEST => 'createUTM',
+            KernelEvents::REQUEST => 'setUTM',
         ];
     }
 
     /**
      * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event Event
      */
-    public function createUTM(GetResponseEvent $event)
+    public function setUTM(GetResponseEvent $event)
     {
         $set = false;
         $utm = new UTM();
 
         foreach ($event->getRequest()->query->all() as $name => $value) {
-            if (0 !== strpos($name, self::$PREFIX)) {
+            if (0 !== strpos($name, self::PARAM_PREFIX)) {
                 continue;
             }
 
-            $method = sprintf('set%s', ucfirst(preg_replace(sprintf('/^%s/', self::$PREFIX), '', $name)));
+            $method = sprintf('set%s', ucfirst(preg_replace(sprintf('/^%s/', self::PARAM_PREFIX), '', $name)));
 
             if (method_exists($utm, $method)) {
                 $utm->$method($value);

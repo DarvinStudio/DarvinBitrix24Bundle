@@ -13,7 +13,7 @@ namespace Darvin\Bitrix24Bundle\UTM;
 use Darvin\Bitrix24Bundle\Model\UTM;
 
 /**
- * Bitrix24 UTM manager
+ * UTM manager
  */
 interface UTMManagerInterface
 {

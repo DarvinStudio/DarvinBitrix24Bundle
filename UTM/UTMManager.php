@@ -14,7 +14,7 @@ use Darvin\Bitrix24Bundle\Model\UTM;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
- * Bitrix24 UTM manager
+ * UTM manager
  */
 class UTMManager implements UTMManagerInterface
 {
