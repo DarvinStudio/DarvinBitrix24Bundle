@@ -16,10 +16,9 @@ namespace Darvin\Bitrix24Bundle\Lead;
 interface LeadFactoryInterface
 {
     /**
-     * @param string|null $title Lead title
+     * @param string $title Lead title
      *
      * @return \Darvin\Bitrix24Bundle\Model\CRM\Lead
-     * @throws \InvalidArgumentException
      */
     public function createLead($title);
 }

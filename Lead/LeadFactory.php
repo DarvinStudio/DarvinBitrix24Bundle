@@ -11,7 +11,7 @@
 namespace Darvin\Bitrix24Bundle\Lead;
 
 use Darvin\Bitrix24Bundle\Model\CRM\Lead;
-use Darvin\Bitrix24Bundle\UTM\UTMManager;
+use Darvin\Bitrix24Bundle\UTM\UTMManagerInterface;
 
 /**
  * Bitrix24 lead factory
@@ -19,14 +19,14 @@ use Darvin\Bitrix24Bundle\UTM\UTMManager;
 class LeadFactory implements LeadFactoryInterface
 {
     /**
-     * @var \Darvin\Bitrix24Bundle\UTM\UTMManager
+     * @var \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface
      */
-    protected $utmManager;
+    private $utmManager;
 
     /**
-     * @param \Darvin\Bitrix24Bundle\UTM\UTMManager $utmManager UTM Manager
+     * @param \Darvin\Bitrix24Bundle\UTM\UTMManagerInterface $utmManager UTM Manager
      */
-    public function __construct(UTMManager $utmManager)
+    public function __construct(UTMManagerInterface $utmManager)
     {
         $this->utmManager = $utmManager;
     }

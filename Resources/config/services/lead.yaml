@@ -4,7 +4,6 @@ parameters:
 services:
     darvin_bitrix24.lead.factory:
         class: '%darvin_bitrix24.lead.factory.class%'
-        public: true
         arguments:
             - '@darvin_bitrix24.utm.manager'
             - '@property_accessor'
