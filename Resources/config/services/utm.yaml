@@ -1,18 +1,17 @@
 parameters:
-    darvin_bitrix24.utm.set_event_subscriber.class: Darvin\Bitrix24Bundle\EventListener\SetUTMSubscriber
-
     darvin_bitrix24.utm.manager.class: Darvin\Bitrix24Bundle\UTM\UTMManager
 
-services:
-    darvin_bitrix24.utm.set_event_subscriber:
-        class: '%darvin_bitrix24.utm.set_event_subscriber.class%'
-        public: true
-        arguments:
-            - '@darvin_bitrix24.utm.manager'
-        tags: [ kernel.event_subscriber ]
+    darvin_bitrix24.utm.set_event_subscriber.class: Darvin\Bitrix24Bundle\EventListener\SetUTMSubscriber
 
+services:
     darvin_bitrix24.utm.manager:
         class: '%darvin_bitrix24.utm.manager.class%'
-        public: true
         arguments:
             - '@session'
+
+    darvin_bitrix24.utm.set_event_subscriber:
+        class: '%darvin_bitrix24.utm.set_event_subscriber.class%'
+        arguments:
+            - '@darvin_bitrix24.utm.manager'
+        tags:
+            - { name: kernel.event_subscriber }

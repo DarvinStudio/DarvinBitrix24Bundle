@@ -13,17 +13,17 @@ namespace Darvin\Bitrix24Bundle\UTM;
 use Darvin\Bitrix24Bundle\Model\UTM;
 
 /**
- * Bitrix24 UTM Manager Interface
+ * Bitrix24 UTM manager
  */
 interface UTMManagerInterface
 {
     /**
-     * @return UTM|null
+     * @return \Darvin\Bitrix24Bundle\Model\UTM|null
      */
     public function getUTM();
 
     /**
-     * @param UTM $utm UTM
+     * @param \Darvin\Bitrix24Bundle\Model\UTM $utm UTM
      */
     public function setUTM(UTM $utm);
 
