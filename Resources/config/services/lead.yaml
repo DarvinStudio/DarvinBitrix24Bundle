@@ -1,0 +1,9 @@
+parameters:
+    darvin_bitrix24.lead.factory.class: Darvin\Bitrix24Bundle\Lead\LeadFactory
+
+services:
+    darvin_bitrix24.lead.factory:
+        class: '%darvin_bitrix24.lead.factory.class%'
+        arguments:
+            - '@darvin_bitrix24.utm.manager'
+            - '@property_accessor'

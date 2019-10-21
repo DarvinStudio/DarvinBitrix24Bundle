@@ -41,7 +41,9 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
 
         (new ConfigLoader($container, __DIR__.'/../Resources/config/services'))->load([
             'client',
+            'lead',
             'repository',
+            'utm',
         ]);
     }
 

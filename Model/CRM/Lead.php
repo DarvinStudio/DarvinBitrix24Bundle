@@ -278,6 +278,41 @@ class Lead extends AbstractModel
     protected $originId;
 
     /**
+     * Обозначение рекламной кампании UTM_CAMPAIGN
+     *
+     * @var string
+     */
+    protected $utmCampaign;
+
+    /**
+     * Содержание кампании UTM_CONTENT
+     *
+     * @var string
+     */
+    protected $utmContent;
+
+    /**
+     * Тип трафика UTM_MEDIUM
+     *
+     * @var string
+     */
+    protected $utmMedium;
+
+    /**
+     * Рекламная система UTM_SOURCE
+     *
+     * @var string
+     */
+    protected $utmSource;
+
+    /**
+     * Условие поиска кампании UTM_TERM
+     *
+     * @var string
+     */
+    protected $utmTerm;
+
+    /**
      * @param string $title Название лида. Обязательное поле.
      */
     public function __construct($title)
@@ -808,6 +843,106 @@ class Lead extends AbstractModel
     public function setOriginId($originId)
     {
         $this->originId = $originId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUtmCampaign()
+    {
+        return $this->utmCampaign;
+    }
+
+    /**
+     * @param string $utmCampaign
+     *
+     * @return Lead
+     */
+    public function setUtmCampaign($utmCampaign)
+    {
+        $this->utmCampaign = $utmCampaign;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUtmContent()
+    {
+        return $this->utmContent;
+    }
+
+    /**
+     * @param string $utmContent
+     *
+     * @return Lead
+     */
+    public function setUtmContent($utmContent)
+    {
+        $this->utmContent = $utmContent;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUtmMedium()
+    {
+        return $this->utmMedium;
+    }
+
+    /**
+     * @param string $utmMedium
+     *
+     * @return Lead
+     */
+    public function setUtmMedium($utmMedium)
+    {
+        $this->utmMedium = $utmMedium;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUtmSource()
+    {
+        return $this->utmSource;
+    }
+
+    /**
+     * @param string $utmSource
+     *
+     * @return Lead
+     */
+    public function setUtmSource($utmSource)
+    {
+        $this->utmSource = $utmSource;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUtmTerm()
+    {
+        return $this->utmTerm;
+    }
+
+    /**
+     * @param string $utmTerm
+     *
+     * @return Lead
+     */
+    public function setUtmTerm($utmTerm)
+    {
+        $this->utmTerm = $utmTerm;
 
         return $this;
     }
