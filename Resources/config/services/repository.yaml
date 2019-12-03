@@ -3,7 +3,6 @@ parameters:
 
 services:
     darvin_bitrix24.repository.crm.lead:
-        class:  '%darvin_bitrix24.repository.crm.lead.class%'
-        public: true
+        class: '%darvin_bitrix24.repository.crm.lead.class%'
         arguments:
             - '@darvin_bitrix24.client'
