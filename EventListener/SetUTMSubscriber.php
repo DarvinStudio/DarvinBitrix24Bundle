@@ -13,7 +13,7 @@ namespace Darvin\Bitrix24Bundle\EventListener;
 use Darvin\Bitrix24Bundle\UTM\Model\UTM;
 use Darvin\Bitrix24Bundle\UTM\UTMManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -47,9 +47,9 @@ class SetUTMSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event Event
+     * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event Event
      */
-    public function setUTM(GetResponseEvent $event): void
+    public function setUTM(RequestEvent $event): void
     {
         $set = false;
         $utm = new UTM();
