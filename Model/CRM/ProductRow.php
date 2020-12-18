@@ -18,7 +18,7 @@ use Darvin\Bitrix24Bundle\Model\AbstractModel;
 class ProductRow extends AbstractModel
 {
     /**
-     * @var int
+     * @var string
      */
     private $productId;
 
@@ -33,11 +33,11 @@ class ProductRow extends AbstractModel
     private $quantity;
 
     /**
-     * @param int    $productId Product ID
+     * @param string $productId Product ID
      * @param string $price     Price
      * @param int    $quantity  Quantity
      */
-    public function __construct(int $productId, string $price, int $quantity)
+    public function __construct(string $productId, string $price, int $quantity)
     {
         $this->productId = $productId;
         $this->price = $price;
@@ -45,11 +45,11 @@ class ProductRow extends AbstractModel
     }
 
     /**
-     * @param int $productId productId
+     * @param string $productId productId
      *
      * @return ProductRow
      */
-    public function setProductId(int $productId): ProductRow
+    public function setProductId(string $productId): ProductRow
     {
         $this->productId = $productId;
 
