@@ -17,67 +17,24 @@ use Darvin\Bitrix24Bundle\Model\AbstractModel;
  */
 class ProductRow extends AbstractModel
 {
-    /**
-     * @var string
-     */
+    private $id;
+    private $ownerId;
+    private $ownerType;
     private $productId;
-
-    /**
-     * @var string
-     */
+    private $productName;
     private $price;
-
-    /**
-     * @var int
-     */
+    private $priceExclusive;
+    private $priceNetto;
+    private $priceBrutto;
     private $quantity;
-
-    /**
-     * @param string $productId Product ID
-     * @param string $price     Price
-     * @param int    $quantity  Quantity
-     */
-    public function __construct(string $productId, string $price, int $quantity)
-    {
-        $this->productId = $productId;
-        $this->price = $price;
-        $this->quantity = $quantity;
-    }
-
-    /**
-     * @param string $productId productId
-     *
-     * @return ProductRow
-     */
-    public function setProductId(string $productId): ProductRow
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    /**
-     * @param string $price price
-     *
-     * @return ProductRow
-     */
-    public function setPrice(string $price): ProductRow
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * @param int $quantity quantity
-     *
-     * @return ProductRow
-     */
-    public function setQuantity(int $quantity): ProductRow
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
+    private $discountTypeId;
+    private $discountRate;
+    private $discountSum;
+    private $taxRate;
+    private $taxIncluded;
+    private $customized;
+    private $measureCode;
+    private $measureName;
+    private $sort;
 }
 
