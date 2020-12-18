@@ -3,3 +3,7 @@
 - UTM manager
 - UTM subscriber for the adding UTM in session
 - Lead factory
+
+6.2.0:
+
+- Alias client service.

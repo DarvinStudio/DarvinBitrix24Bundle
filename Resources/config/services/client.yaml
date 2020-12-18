@@ -2,6 +2,8 @@ parameters:
     darvin_bitrix24.client.class: Darvin\Bitrix24Bundle\Client\Client
 
 services:
+    Darvin\Bitrix24Bundle\Client\ClientInterface: '@darvin_bitrix24.client'
+
     darvin_bitrix24.client:
         class: '%darvin_bitrix24.client.class%'
         arguments:
