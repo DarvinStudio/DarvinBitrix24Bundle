@@ -13,7 +13,7 @@ namespace Darvin\Bitrix24Bundle\Request\Command;
 /**
  * Command
  */
-class Command implements \JsonSerializable
+class Command
 {
     /**
      * @var string
@@ -47,9 +47,9 @@ class Command implements \JsonSerializable
     }
 
     /**
-     * {@inheritDoc}
+     * @return string
      */
-    public function jsonSerialize(): string
+    public function __toString(): string
     {
         $parts = [$this->method];
 

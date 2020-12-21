@@ -15,7 +15,7 @@ use Darvin\Bitrix24Bundle\Request\Command\Command;
 /**
  * Request
  */
-class Request implements \JsonSerializable
+class Request
 {
     /**
      * Определяет прерывать ли последовательность запросов в случае ошибки.
@@ -44,13 +44,13 @@ class Request implements \JsonSerializable
     }
 
     /**
-     * {@inheritDoc}
+     * @return array
      */
-    public function jsonSerialize(): array
+    public function getParams(): array
     {
         return [
             'halt' => (int)$this->halt,
-            'cmd'  => $this->commands,
+            'cmd'  => array_map('strval', $this->commands),
         ];
     }
 

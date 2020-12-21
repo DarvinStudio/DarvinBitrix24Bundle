@@ -11,6 +11,7 @@
 namespace Darvin\Bitrix24Bundle\Client;
 
 use Darvin\Bitrix24Bundle\Exception\Bitrix24Exception;
+use Darvin\Bitrix24Bundle\Request\Request;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
@@ -46,6 +47,26 @@ class Client implements ClientInterface
     public function setLogger(?LoggerInterface $logger)
     {
         $this->logger = $logger;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function send(Request $request)
+    {
+        try {
+            $response = $this->httpClient->request('post', 'batch.json', [
+                RequestOptions::FORM_PARAMS => $request->getParams(),
+            ]);
+        } catch (GuzzleException $ex) {
+            if ($ex instanceof RequestException && null !== $ex->getResponse()) {
+                return $this->handleResponse($ex->getResponse());
+            }
+
+            throw $this->handleError($ex->getMessage(), null, $ex);
+        }
+
+        return $this->handleResponse($response);
     }
 
     /**

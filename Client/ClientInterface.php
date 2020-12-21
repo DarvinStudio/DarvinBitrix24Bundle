@@ -10,11 +10,21 @@
 
 namespace Darvin\Bitrix24Bundle\Client;
 
+use Darvin\Bitrix24Bundle\Request\Request;
+
 /**
  * Client
  */
 interface ClientInterface
 {
+    /**
+     * @param \Darvin\Bitrix24Bundle\Request\Request $request Request
+     *
+     * @return mixed
+     * @throws \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
+     */
+    public function send(Request $request);
+
     /**
      * @param string $method Method
      * @param array  $fields Fields
