@@ -10,6 +10,8 @@
 
 namespace Darvin\Bitrix24Bundle\Request;
 
+use Darvin\Bitrix24Bundle\Request\Command\Command;
+
 /**
  * Request
  */
@@ -26,13 +28,13 @@ class Request
      * Массив запросов стандартного вида (следует помнить про квотирование данных запросов; получается, что данные для
      * подзапросов должны пройти двойное квотирование).
      *
-     * @var \Darvin\Bitrix24Bundle\Request\Command[]
+     * @var \Darvin\Bitrix24Bundle\Request\Command\Command[]
      */
     private $commands;
 
     /**
-     * @param bool                                     $halt     Halt
-     * @param \Darvin\Bitrix24Bundle\Request\Command[] $commands Commands
+     * @param bool                                             $halt     Halt
+     * @param \Darvin\Bitrix24Bundle\Request\Command\Command[] $commands Commands
      */
     public function __construct(bool $halt = false, array $commands = [])
     {
@@ -54,7 +56,7 @@ class Request
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Request\Command[] $commands commands
+     * @param \Darvin\Bitrix24Bundle\Request\Command\Command[] $commands commands
      *
      * @return Request
      */
@@ -72,7 +74,7 @@ class Request
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Request\Command $command Command
+     * @param \Darvin\Bitrix24Bundle\Request\Command\Command $command Command
      *
      * @return Request
      */

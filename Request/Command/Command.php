@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Request;
+namespace Darvin\Bitrix24Bundle\Request\Command;
 
 /**
  * Command
