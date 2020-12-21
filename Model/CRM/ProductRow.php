@@ -18,96 +18,134 @@ use Darvin\Bitrix24Bundle\Model\AbstractModel;
 class ProductRow extends AbstractModel
 {
     /**
+     * ID
+     *
      * @var int|null
      */
     private $id;
 
     /**
+     * Owner ID
+     *
      * @var int|null
      */
     private $ownerId;
 
     /**
+     * Owner type
+     *
      * @var string|null
      */
     private $ownerType;
 
     /**
+     * Product
+     *
      * @var int
      */
     private $productId;
 
     /**
+     * Product name
+     *
      * @var string|null
      */
     private $productName;
 
     /**
+     * Price
+     *
      * @var float|null
      */
     private $price;
 
     /**
+     * Discounted price without tax
+     *
      * @var float|null
      */
     private $priceExclusive;
 
     /**
+     * PRICE_NETTO
+     *
      * @var float|null
      */
     private $priceNetto;
 
     /**
+     * PRICE_BRUTTO
+     *
      * @var float|null
      */
     private $priceBrutto;
 
     /**
+     * Quantity
+     *
      * @var float|null
      */
     private $quantity;
 
     /**
+     * Discount type
+     *
      * @var int|null
      */
     private $discountTypeId;
 
     /**
+     * Discount value
+     *
      * @var float|null
      */
     private $discountRate;
 
     /**
+     * Discount amount
+     *
      * @var float|null
      */
     private $discountSum;
 
     /**
+     * Tax
+     *
      * @var float|null
      */
     private $taxRate;
 
     /**
+     * Tax included
+     *
      * @var bool|null
      */
     private $taxIncluded;
 
     /**
+     * Modified on
+     *
      * @var bool|null
      */
     private $customized;
 
     /**
+     * Unit of measurement code
+     *
      * @var int|null
      */
     private $measureCode;
 
     /**
+     * Unit of measurement
+     *
      * @var string|null
      */
     private $measureName;
 
     /**
+     * Sort
+     *
      * @var int|null
      */
     private $sort;
