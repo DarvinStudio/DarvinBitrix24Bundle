@@ -70,4 +70,38 @@ class Request
 
         return $this;
     }
+
+    /**
+     * @param \Darvin\Bitrix24Bundle\Request\Command $command Command
+     *
+     * @return Request
+     */
+    public function addCommand(Command $command): Request
+    {
+        $this->commands[$command->getName()] = $command;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name Command name
+     *
+     * @return Request
+     */
+    public function removeCommand(string $name): Request
+    {
+        unset($this->commands[$name]);
+
+        return $this;
+    }
+
+    /**
+     * @param string $name Command name
+     *
+     * @return bool
+     */
+    public function hasCommand(string $name): bool
+    {
+        return isset($this->commands[$name]);
+    }
 }
