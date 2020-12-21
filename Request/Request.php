@@ -33,14 +33,14 @@ class Request
     private $commands;
 
     /**
-     * @param bool                                             $halt     Halt
-     * @param \Darvin\Bitrix24Bundle\Request\Command\Command[] $commands Commands
+     * @param bool                                                                                            $halt     Halt
+     * @param \Darvin\Bitrix24Bundle\Request\Command\Command[]|\Darvin\Bitrix24Bundle\Request\Command\Command $commands Commands
      */
-    public function __construct(bool $halt = true, array $commands = [])
+    public function __construct($commands = [], bool $halt = true)
     {
         $this->halt = $halt;
 
-        $this->setCommands($commands);
+        $this->setCommands(is_array($commands) ? $commands : [$commands]);
     }
 
     /**

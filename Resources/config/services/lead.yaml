@@ -2,6 +2,8 @@ parameters:
     darvin_bitrix24.lead.factory.class: Darvin\Bitrix24Bundle\Lead\LeadFactory
 
 services:
+    Darvin\Bitrix24Bundle\Lead\LeadFactoryInterface: '@darvin_bitrix24.lead.factory'
+
     darvin_bitrix24.lead.factory:
         class: '%darvin_bitrix24.lead.factory.class%'
         arguments:
