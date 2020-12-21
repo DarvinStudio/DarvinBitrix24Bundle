@@ -28,16 +28,17 @@ class Request
      *
      * @var \Darvin\Bitrix24Bundle\Request\Command[]
      */
-    private $cmd;
+    private $commands;
 
     /**
-     * @param bool                                     $halt Halt
-     * @param \Darvin\Bitrix24Bundle\Request\Command[] $cmd  Commands
+     * @param bool                                     $halt     Halt
+     * @param \Darvin\Bitrix24Bundle\Request\Command[] $commands Commands
      */
-    public function __construct(bool $halt = false, array $cmd = [])
+    public function __construct(bool $halt = false, array $commands = [])
     {
         $this->halt = $halt;
-        $this->cmd = $cmd;
+
+        $this->setCommands($commands);
     }
 
     /**
@@ -53,13 +54,19 @@ class Request
     }
 
     /**
-     * @param \Darvin\Bitrix24Bundle\Request\Command[] $cmd cmd
+     * @param \Darvin\Bitrix24Bundle\Request\Command[] $commands commands
      *
      * @return Request
      */
-    public function setCmd(array $cmd): Request
+    public function setCommands(array $commands): Request
     {
-        $this->cmd = $cmd;
+        $cmd = [];
+
+        foreach ($commands as $command) {
+            $cmd[$command->getName()] = $command;
+        }
+
+        $this->commands = $cmd;
 
         return $this;
     }

@@ -43,6 +43,14 @@ class Command
     }
 
     /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
      * @param string $name name
      *
      * @return Command
