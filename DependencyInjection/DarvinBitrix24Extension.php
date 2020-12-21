@@ -43,6 +43,7 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
             'client',
             'lead',
             'repository',
+            'request',
             'utm',
         ]);
     }

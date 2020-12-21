@@ -1,0 +1,8 @@
+parameters:
+    darvin_bitrix24.request.command.factory.lead.class: Darvin\Bitrix24Bundle\Request\Command\Factory\LeadCommandFactory
+
+services:
+    Darvin\Bitrix24Bundle\Request\Command\Factory\LeadCommandFactoryInterface: '@darvin_bitrix24.request.command.factory.lead'
+
+    darvin_bitrix24.request.command.factory.lead:
+        class: '%darvin_bitrix24.request.command.factory.lead.class%'
