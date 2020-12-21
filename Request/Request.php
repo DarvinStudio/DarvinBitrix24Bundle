@@ -36,7 +36,7 @@ class Request
      * @param bool                                             $halt     Halt
      * @param \Darvin\Bitrix24Bundle\Request\Command\Command[] $commands Commands
      */
-    public function __construct(bool $halt = false, array $commands = [])
+    public function __construct(bool $halt = true, array $commands = [])
     {
         $this->halt = $halt;
 

@@ -107,6 +107,20 @@ class Client implements ClientInterface
         if (null === $data) {
             throw $this->handleError(sprintf('Unable to decode response "%s" as JSON', $json), json_last_error_msg());
         }
+        if (isset($data['result']['result_error']) && is_iterable($data['result']['result_error'])) {
+            foreach ($data['result']['result_error'] as $command => $attr) {
+                $description = null;
+
+                if (isset($attr['error_description'])) {
+                    $description = (string)$attr['error_description'];
+                }
+                if (null === $description && isset($attr['error'])) {
+                    $description = (string)$attr['error'];
+                }
+
+                throw $this->handleError($command, $description);
+            }
+        }
         if (isset($data['error']) || isset($data['error_description'])) {
             throw $this->handleError(
                 isset($data['error']) ? (string)$data['error'] : null,
