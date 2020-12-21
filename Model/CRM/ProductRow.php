@@ -112,4 +112,3 @@ class ProductRow extends AbstractModel
      */
     private $sort;
 }
-
