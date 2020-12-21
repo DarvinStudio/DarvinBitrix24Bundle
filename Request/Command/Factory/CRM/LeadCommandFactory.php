@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Darvin\Bitrix24Bundle\Request\Command\Factory;
+namespace Darvin\Bitrix24Bundle\Request\Command\Factory\CRM;
 
 use Darvin\Bitrix24Bundle\Model\CRM\Lead;
 use Darvin\Bitrix24Bundle\Request\Command\Command;
