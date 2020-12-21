@@ -21,6 +21,8 @@ interface ModelInterface
     public function getData(): array;
 
     /**
+     * @deprecated Use getData() instead.
+     *
      * @return array
      */
     public function getFields(): array;

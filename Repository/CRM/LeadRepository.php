@@ -16,6 +16,8 @@ use Darvin\Bitrix24Bundle\Value\ValueFormatter;
 
 /**
  * Lead repository
+ *
+ * @deprecated
  */
 class LeadRepository implements LeadRepositoryInterface
 {

@@ -26,6 +26,8 @@ interface ClientInterface
     public function send(Request $request);
 
     /**
+     * @deprecated Use send() instead.
+     *
      * @param string $method Method
      * @param array  $fields Fields
      * @param array  $params Parameters

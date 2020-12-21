@@ -14,6 +14,8 @@ use Darvin\Bitrix24Bundle\Model\CRM\Lead;
 
 /**
  * Lead repository
+ *
+ * @deprecated
  */
 interface LeadRepositoryInterface
 {
