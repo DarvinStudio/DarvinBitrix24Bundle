@@ -40,7 +40,11 @@ class Request
     {
         $this->halt = $halt;
 
-        $this->setCommands(is_array($commands) ? $commands : [$commands]);
+        if (!is_array($commands)) {
+            $commands = [$commands];
+        }
+
+        $this->setCommands($commands);
     }
 
     /**

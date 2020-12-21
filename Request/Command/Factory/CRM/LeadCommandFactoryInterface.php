@@ -27,10 +27,10 @@ interface LeadCommandFactoryInterface
     public function createAddCommand(Lead $lead, bool $registerSonetEvent = true): Command;
 
     /**
-     * @param string                                        $id   Lead ID
-     * @param \Darvin\Bitrix24Bundle\Model\CRM\ProductRow[] $rows Rows
+     * @param \Darvin\Bitrix24Bundle\Model\CRM\ProductRow[]|\Darvin\Bitrix24Bundle\Model\CRM\ProductRow $rows Rows
+     * @param string                                                                                    $id   Lead ID
      *
      * @return \Darvin\Bitrix24Bundle\Request\Command\Command
      */
-    public function createSetProductRowsCommand(string $id, array $rows): Command;
+    public function createSetProductRowsCommand($rows, string $id = '$result[crm.lead.add]'): Command;
 }

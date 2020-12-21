@@ -36,8 +36,12 @@ class LeadCommandFactory implements LeadCommandFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function createSetProductRowsCommand(string $id, array $rows): Command
+    public function createSetProductRowsCommand($rows, string $id = '$result[crm.lead.add]'): Command
     {
+        if (!is_array($rows)) {
+            $rows = [$rows];
+        }
+
         return new Command('crm.lead.productrows.set', [
             'id'   => $id,
             'rows' => array_map(function (ProductRow $row): array {
