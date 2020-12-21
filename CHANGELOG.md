@@ -4,6 +4,4 @@
 - UTM subscriber for the adding UTM in session
 - Lead factory
 
-6.2.0:
-
-- Alias client service.
+6.2.0: Replace ClientInterface::call() with send().
