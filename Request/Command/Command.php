@@ -13,7 +13,7 @@ namespace Darvin\Bitrix24Bundle\Request\Command;
 /**
  * Command
  */
-class Command
+class Command implements \JsonSerializable
 {
     /**
      * @var string
@@ -31,15 +31,33 @@ class Command
     private $params;
 
     /**
-     * @param string $name   Name
-     * @param string $method Method
-     * @param array  $params Parameters
+     * @param string      $method Method
+     * @param array       $params Parameters
+     * @param string|null $name   Name
      */
-    public function __construct(string $name, string $method, array $params = [])
+    public function __construct(string $method, array $params = [], ?string $name = null)
     {
+        if (null === $name) {
+            $name = $method;
+        }
+
         $this->name = $name;
         $this->method = $method;
         $this->params = $params;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function jsonSerialize(): string
+    {
+        $parts = [$this->method];
+
+        if (!empty($this->params)) {
+            $parts = array_merge($parts, ['?', http_build_query($this->params)]);
+        }
+
+        return implode('', $parts);
     }
 
     /**
