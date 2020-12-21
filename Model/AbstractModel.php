@@ -23,6 +23,14 @@ abstract class AbstractModel implements ModelInterface
      */
     public function getFields(): array
     {
+        return $this->getData();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getData(): array
+    {
         $data = [];
 
         foreach (get_object_vars($this) as $name => $value) {
