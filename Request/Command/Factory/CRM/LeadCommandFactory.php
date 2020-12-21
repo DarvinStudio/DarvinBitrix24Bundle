@@ -11,6 +11,7 @@
 namespace Darvin\Bitrix24Bundle\Request\Command\Factory\CRM;
 
 use Darvin\Bitrix24Bundle\Model\CRM\Lead;
+use Darvin\Bitrix24Bundle\Model\CRM\ProductRow;
 use Darvin\Bitrix24Bundle\Request\Command\Command;
 use Darvin\Bitrix24Bundle\Value\ValueFormatter;
 
@@ -29,6 +30,19 @@ class LeadCommandFactory implements LeadCommandFactoryInterface
             'params' => [
                 'REGISTER_SONET_EVENT' => ValueFormatter::format($registerSonetEvent),
             ],
+        ]);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createSetProductRowsCommand(string $id, array $rows): Command
+    {
+        return new Command('crm.lead.productrows.set', [
+            'id'   => $id,
+            'rows' => array_map(function (ProductRow $row): array {
+                return $row->getData();
+            }, $rows),
         ]);
     }
 }
