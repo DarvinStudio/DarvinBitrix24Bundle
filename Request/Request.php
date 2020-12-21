@@ -63,16 +63,4 @@ class Request
 
         return $this;
     }
-
-    /**
-     * @param \Darvin\Bitrix24Bundle\Request\Command $cmd cmd
-     *
-     * @return Request
-     */
-    public function addCmd(Command $cmd): Request
-    {
-        $this->cmd[] = $cmd;
-
-        return $this;
-    }
 }
