@@ -80,7 +80,7 @@ class Request
         $cmd = [];
 
         foreach ($commands as $command) {
-            $cmd[$command->getName()] = $command;
+            $cmd[$command->getMethod()] = $command;
         }
 
         $this->commands = $cmd;
@@ -95,30 +95,30 @@ class Request
      */
     public function addCommand(Command $command): Request
     {
-        $this->commands[$command->getName()] = $command;
+        $this->commands[$command->getMethod()] = $command;
 
         return $this;
     }
 
     /**
-     * @param string $name Command name
+     * @param string $method Command method
      *
      * @return Request
      */
-    public function removeCommand(string $name): Request
+    public function removeCommand(string $method): Request
     {
-        unset($this->commands[$name]);
+        unset($this->commands[$method]);
 
         return $this;
     }
 
     /**
-     * @param string $name Command name
+     * @param string $method Command method
      *
      * @return bool
      */
-    public function hasCommand(string $name): bool
+    public function hasCommand(string $method): bool
     {
-        return isset($this->commands[$name]);
+        return isset($this->commands[$method]);
     }
 }

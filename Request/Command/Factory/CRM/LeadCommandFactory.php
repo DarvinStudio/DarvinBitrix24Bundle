@@ -25,7 +25,7 @@ class LeadCommandFactory implements LeadCommandFactoryInterface
      */
     public function createAddCommand(Lead $lead, bool $registerSonetEvent = true): Command
     {
-        return new Command('crm.lead.add', [
+        return new Command(LeadCommandFactoryInterface::COMMAND_ADD, [
             'fields' => $lead->getData(),
             'params' => [
                 'REGISTER_SONET_EVENT' => ValueFormatter::format($registerSonetEvent),
@@ -42,7 +42,7 @@ class LeadCommandFactory implements LeadCommandFactoryInterface
             $rows = [$rows];
         }
 
-        return new Command('crm.lead.productrows.set', [
+        return new Command(LeadCommandFactoryInterface::COMMAND_SET_PRODUCT_ROWS, [
             'id'   => $id,
             'rows' => array_map(function (ProductRow $row): array {
                 return $row->getData();

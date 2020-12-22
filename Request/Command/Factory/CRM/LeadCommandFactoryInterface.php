@@ -18,6 +18,9 @@ use Darvin\Bitrix24Bundle\Request\Command\Command;
  */
 interface LeadCommandFactoryInterface
 {
+    public const COMMAND_ADD              = 'crm.lead.add';
+    public const COMMAND_SET_PRODUCT_ROWS = 'crm.lead.productrows.set';
+
     /**
      * @param \Darvin\Bitrix24Bundle\Model\CRM\Lead $lead               Lead
      * @param bool                                  $registerSonetEvent Произвести регистрацию события добавления лида в живой ленте.

@@ -18,11 +18,6 @@ class Command
     /**
      * @var string
      */
-    private $name;
-
-    /**
-     * @var string
-     */
     private $method;
 
     /**
@@ -31,17 +26,11 @@ class Command
     private $params;
 
     /**
-     * @param string      $method Method
-     * @param array       $params Parameters
-     * @param string|null $name   Name
+     * @param string $method Method
+     * @param array  $params Parameters
      */
-    public function __construct(string $method, array $params = [], ?string $name = null)
+    public function __construct(string $method, array $params = [])
     {
-        if (null === $name) {
-            $name = $method;
-        }
-
-        $this->name = $name;
         $this->method = $method;
         $this->params = $params;
     }
@@ -63,21 +52,9 @@ class Command
     /**
      * @return string
      */
-    public function getName(): string
+    public function getMethod(): string
     {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name name
-     *
-     * @return Command
-     */
-    public function setName(string $name): Command
-    {
-        $this->name = $name;
-
-        return $this;
+        return $this->method;
     }
 
     /**

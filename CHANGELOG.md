@@ -5,3 +5,5 @@
 - Lead factory
 
 6.2.0: Replace ClientInterface::call() with send().
+
+6.2.1: Remove command names.
