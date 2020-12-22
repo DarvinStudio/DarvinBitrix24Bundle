@@ -17,6 +17,9 @@ use Darvin\Bitrix24Bundle\Model\AbstractModel;
  */
 class ProductRow extends AbstractModel
 {
+    public const DISCOUNT_TYPE_ID_SUM     = 1;
+    public const DISCOUNT_TYPE_ID_PERCENT = 2;
+
     /**
      * ID
      *
