@@ -80,4 +80,19 @@ class Command
 
         return $this;
     }
+
+    /**
+     * @param string $name    Parameter name
+     * @param mixed  $default Default value
+     *
+     * @return mixed
+     */
+    public function getParam(string $name, $default = null)
+    {
+        if (array_key_exists($name, $this->params)) {
+            return $this->params[$name];
+        }
+
+        return $default;
+    }
 }

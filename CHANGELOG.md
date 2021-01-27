@@ -9,3 +9,9 @@
 6.2.1: Remove command names.
 
 6.2.2: Add discount type ID constants to product row model.
+
+6.2.3:
+
+- Add Request::getCommand();
+
+- Add Command::getParam();

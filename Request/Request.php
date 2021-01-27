@@ -115,6 +115,21 @@ class Request
     /**
      * @param string $method Command method
      *
+     * @return \Darvin\Bitrix24Bundle\Request\Command\Command
+     * @throws \InvalidArgumentException
+     */
+    public function getCommand(string $method): Command
+    {
+        if (!isset($this->commands[$method])) {
+            throw new \InvalidArgumentException(sprintf('Request does not contain command "%s".', $method));
+        }
+
+        return $this->commands[$method];
+    }
+
+    /**
+     * @param string $method Command method
+     *
      * @return bool
      */
     public function hasCommand(string $method): bool
