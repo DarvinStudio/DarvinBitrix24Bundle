@@ -39,6 +39,8 @@ class DarvinBitrix24Extension extends Extension implements PrependExtensionInter
             throw new \RuntimeException('EightPointsGuzzleBundle is not enabled.');
         }
 
+        $container->setParameter('darvin_bitrix24.account.domain', $config['account']['domain']);
+
         (new ConfigLoader($container, __DIR__.'/../Resources/config/services'))->load([
             'client',
             'lead',
