@@ -15,3 +15,5 @@
 - Add Request::getCommand();
 
 - Add Command::getParam();
+
+6.2.4: Add lead router.

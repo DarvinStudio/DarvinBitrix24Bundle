@@ -1,0 +1,10 @@
+parameters:
+    darvin_bitrix24.router.lead.class: Darvin\Bitrix24Bundle\Router\LeadRouter
+
+services:
+    Darvin\Bitrix24Bundle\Router\LeadRouterInterface: '@darvin_bitrix24.router.lead'
+
+    darvin_bitrix24.router.lead:
+        class: '%darvin_bitrix24.router.lead.class%'
+        arguments:
+            - '%darvin_bitrix24.account.domain%'
