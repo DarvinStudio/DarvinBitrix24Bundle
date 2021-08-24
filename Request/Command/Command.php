@@ -70,6 +70,14 @@ class Command
     }
 
     /**
+     * @return array
+     */
+    public function getParams(): array
+    {
+        return $this->params;
+    }
+
+    /**
      * @param array $params params
      *
      * @return Command
