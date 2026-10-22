@@ -12,7 +12,7 @@ parameters:
         # NodeDefinition::end() as NodeParentInterface|null, while the runtime objects are ArrayNodeDefinition /
         # NodeBuilder. Not reported by every Symfony version, hence reportUnmatched: false.
         -
-            message: '#^Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\(NodeDefinition|NodeParentInterface)\:\:\w+\(\)\.$#'
+            message: '#^Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\(NodeDefinition\:\:children|NodeParentInterface\:\:scalarNode)\(\)\.$#'
             identifier: method.notFound
             reportUnmatched: false
             path: DependencyInjection/Configuration.php
