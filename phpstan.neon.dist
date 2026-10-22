@@ -1,0 +1,18 @@
+parameters:
+    level: 5
+    phpVersion:
+        min: 70200
+        max: 80400
+    excludePaths:
+        - */Tests/*
+        - */vendor/*
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # False positive from third-party docblocks: TreeBuilder::getRootNode() is declared as NodeDefinition and
+        # NodeDefinition::end() as NodeParentInterface|null, while the runtime objects are ArrayNodeDefinition /
+        # NodeBuilder. Not reported by every Symfony version, hence reportUnmatched: false.
+        -
+            message: '#^Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\(NodeDefinition|NodeParentInterface)\:\:\w+\(\)\.$#'
+            identifier: method.notFound
+            reportUnmatched: false
+            path: DependencyInjection/Configuration.php
