@@ -25,9 +25,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
+        $builder = new TreeBuilder('darvin_bitrix24');
 
-        $root = $builder->root('darvin_bitrix24');
+        $root = method_exists($builder, 'getRootNode') ? $builder->getRootNode() : $builder->root('darvin_bitrix24');
         $root
             ->children()
                 ->arrayNode('account')->canBeEnabled()

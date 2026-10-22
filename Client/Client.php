@@ -43,7 +43,7 @@ class Client implements ClientInterface
     /**
      * @param \Psr\Log\LoggerInterface|null $logger Logger
      */
-    public function setLogger(LoggerInterface $logger = null)
+    public function setLogger(?LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
@@ -99,11 +99,11 @@ class Client implements ClientInterface
     /**
      * @param string|null     $error       Error
      * @param string|null     $description Error description
-     * @param \Exception|null $previous    Previous exception
+     * @param \Throwable|null $previous    Previous exception
      *
      * @return \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    private function handleError($error = null, $description = null, \Exception $previous = null)
+    private function handleError($error = null, $description = null, ?\Throwable $previous = null)
     {
         $error       = (string)$error;
         $description = (string)$description;
