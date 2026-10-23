@@ -134,11 +134,11 @@ class Client implements ClientInterface
     /**
      * @param string|null     $error       Error
      * @param string|null     $description Error description
-     * @param \Exception|null $previous    Previous exception
+     * @param \Throwable|null $previous    Previous exception
      *
      * @return \Darvin\Bitrix24Bundle\Exception\Bitrix24Exception
      */
-    private function handleError(?string $error = null, ?string $description = null, ?\Exception $previous = null): Bitrix24Exception
+    private function handleError(?string $error = null, ?string $description = null, ?\Throwable $previous = null): Bitrix24Exception
     {
         $error       = (string)$error;
         $description = (string)$description;
